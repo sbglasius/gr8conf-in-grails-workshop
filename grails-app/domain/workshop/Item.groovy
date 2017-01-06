@@ -9,4 +9,8 @@ class Item {
         name nullable: false
         price min: 0.0, scale: 2
     }
+
+    String toString() {
+        "${name} (${price})"
+    }
 }
