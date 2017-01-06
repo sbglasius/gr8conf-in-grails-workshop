@@ -10,6 +10,8 @@ class Order {
     Date dateCreated
     Date lastUpdated
 
+    static belongsTo = [owner: Owner]
+
     static constraints = {
         deliveryLocation nullable: false
         amount min: 1
