@@ -5,6 +5,7 @@ class Order {
     String deliveryLocation
     int amount
     Item item
+    OrderStatus status = OrderStatus.PENDING
 
     Date dateCreated
     Date lastUpdated
