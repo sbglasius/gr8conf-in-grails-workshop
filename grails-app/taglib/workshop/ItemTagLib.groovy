@@ -17,7 +17,7 @@ class ItemTagLib {
         if(item.outOfStock) {
             out << """<span class="badge">Out of Stock</span>"""
         } else {
-            out << g.link(controller: 'order', action: 'create', params: ['item.id': item.id, amount: 1], 'Order')
+            out << g.link(controller: 'order', action: 'create', params: ['item.id': item.id, amount: 1], class: 'btn btn-success', 'Order')
         }
     }
 }
