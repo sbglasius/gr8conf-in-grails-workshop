@@ -5,7 +5,7 @@ import workshop.Item
 class ItemTagLib {
     static namespace="i"
     static defaultEncodeAs = [taglib:'html']
-    //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
+    static encodeAsForTags = [orderItem: [taglib:'raw']]
 
     def orderItem = { attrs ->
         Item item = attrs.item
