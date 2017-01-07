@@ -17,7 +17,8 @@ class OrderController {
         respond order
     }
 
-    def create() {
+    def create(Owner owner) {
+        params.deliveryLocation = owner?.defaultLocation
         respond new Order(params)
     }
 
