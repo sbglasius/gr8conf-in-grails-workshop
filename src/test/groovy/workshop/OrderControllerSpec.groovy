@@ -4,15 +4,20 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(OrderController)
-@Mock(Order)
+@Mock([Order, Item, Owner])
 class OrderControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
 
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        params["owner.id"] = new Owner(name: "John Doe", defaultLocation: "Desk007").save(flush: true, validate: false).id
+        params["deliveryDate"] = 'date.struct'
+        params["deliveryDate_day"] = '8'
+        params["deliveryDate_month"] = '1'
+        params["deliveryDate_year"] = '2017'
+        params["deliveryLocation"] = 'Somewhere'
+        params["amount"] = 5
+        params["item.id"] = new Item(name: "Latte", price: 100).save(flush: true, validate: false).id
     }
 
     void "Test the index action returns the correct model"() {
