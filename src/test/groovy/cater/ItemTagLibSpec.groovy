@@ -21,7 +21,7 @@ class ItemTagLibSpec extends Specification {
 
         where:
         outOfStock || expectedText
-        false      || '<a href="/order/create?item.id=&amount=1">Order</a>'
+        false      || '<a href="/order/create?item.id=&amount=1" class="btn btn-success">Order</a>'
         true       || '<span class="badge">Out of Stock</span>'
     }
 }
