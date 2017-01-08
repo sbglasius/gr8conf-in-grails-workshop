@@ -6,6 +6,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class OrderController {
 
+    OrderService orderService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -18,7 +20,7 @@ class OrderController {
     }
 
     def create(Owner owner) {
-        params.deliveryLocation = owner?.defaultLocation
+        if(owner?.defaultLocation) params.deliveryLocation = owner?.defaultLocation
         respond new Order(params)
     }
 
@@ -36,7 +38,7 @@ class OrderController {
             return
         }
 
-        order.save flush:true
+        orderService.save(order)
 
         request.withFormat {
             form multipartForm {

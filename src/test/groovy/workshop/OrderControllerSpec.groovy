@@ -7,6 +7,10 @@ import spock.lang.*
 @Mock([Order, Item, Owner])
 class OrderControllerSpec extends Specification {
 
+    def doWithSpring = {
+        orderService(OrderService)
+    }
+    
     def populateValidParams(params) {
         assert params != null
 params["owner.id"] = new Owner(name: "John Doe", defaultLocation: "Desk007").save(flush: true, validate: false).id
